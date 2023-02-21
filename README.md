@@ -36,7 +36,7 @@ print(simplesettings.load())
 ```
 Output: `{'PlayerKey': 10}`
 
-Note that the `simplesettings.load()` function will automatically convert strings of integers, floats, tuples, lists and dictionaries to the right type,
+Note that the `simplesettings.load()` function will automatically convert strings of integers, floats, booleans, tuples, lists and dictionaries to the right type,
 don't forget to convert them back to the type you want (which you should be doing anyway x))
 
 ---
