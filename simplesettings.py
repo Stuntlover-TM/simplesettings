@@ -30,5 +30,5 @@ def load():
             for i, j in dictionary.items():
                 try:
                     return_cache[dictionary["name"]] = ast.literal_eval(str(dictionary["value"]))# if isinstance(j, dict) else None
-                except: continue
+                except: return_cache[dictionary["name"]] = j
         return return_cache
