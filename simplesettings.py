@@ -1,53 +1,56 @@
-import csv
 import ast
-import io
 import os
 
 
-def _init():
+def _init(filename):
     if not os.path.isfile(".settings"):
-        with open(".settings", "w", newline="") as cachefile:
-            writer = csv.writer(cachefile, delimiter="|")
-            writer.writerow(["name", "value"])
+        open(filename, "w").close()
 
 
-def clear():
-    with open(".settings", "w", newline="") as cachefile:
-        writer = csv.writer(cachefile, delimiter="|")
-        writer.writerow(["name", "value"])  
+def clear(filename=".settings"):
+    open(filename, "w").close()
 
 
-def save(name, value):
-    _init()
-    with open(".settings", "a", newline="") as cachefile:
-        writer = csv.writer(cachefile, delimiter="|")
-        writer.writerow([name, value])
+def save_dict(dictionary, filename=".settings"):
+    _init(filename)
+    with open(filename, "r") as variablesf:
+        variables = loads(variablesf.read())
+
+    for key, value in dictionary.items():
+        variables[key] = value
+
+    with open(filename, "w") as ssfile:
+        for name, value in variables.items():
+            ssfile.write(f"{name} = {value}\n")
 
 
-def load():
-    _init()
-    with open(".settings", "r") as cachefile:
-        reader = csv.DictReader(cachefile, delimiter="|")
-        cachedicts = list(reader)
-        return_cache = {}
-
-        for dictionary in cachedicts:
-            for i, j in dictionary.items():
-                try:
-                    return_cache[dictionary["name"]] = ast.literal_eval(str(dictionary["value"]))# if isinstance(j, dict) else None
-                except: return_cache[dictionary["name"]] = j
-        return return_cache
+def save(name, value, filename=".settings"):
+    save_dict({name: value}, filename=filename)
 
 
-def loads(str):
-    _init()
-    reader = csv.DictReader(io.StringIO(str.strip()), delimiter="|")
-    cachedicts = list(reader)
-    return_cache = {}
-
-    for dictionary in cachedicts:
-        for i, j in dictionary.items():
+def load(filename=".settings"):
+    _init(filename=filename)
+    return_dict = {}
+    with open(filename, "r") as ssfile:
+        varlines = ssfile.read().split("\n")
+        for line in varlines:
             try:
-                return_cache[dictionary["name"]] = ast.literal_eval(str(dictionary["value"]))# if isinstance(j, dict) else None
-            except: return_cache[dictionary["name"]] = j
-    return return_cache
+                name = line.split("=")[0].strip()
+                value = ast.literal_eval(line.split("=")[1].split("#")[0].strip())
+                return_dict[name] = value
+            except:
+                continue
+    return return_dict
+
+
+def loads(string):
+    return_dict = {}
+    varlines = string.split("\n")
+    for line in varlines:
+        try:
+            name = line.split("=")[0].strip()
+            value = ast.literal_eval(line.split("=")[1].split("#")[0].strip())
+            return_dict[name] = value
+        except:
+            continue
+    return return_dict
