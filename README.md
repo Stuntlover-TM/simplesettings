@@ -60,6 +60,8 @@ print(simplesettings.load())
 ```
 Output: `{'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}`
 
+---
+
 `simplesettings.loads()` The same as `simplesettings.load()` but takes a simplesettings string as an argument, example:
 ```py
 import simplesettings
