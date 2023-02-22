@@ -11,9 +11,10 @@ A simple settings module for Python
 ```py
 import simplesettings
 
-PlayerKey = "10"
-
-simplesettings.save("PlayerKey", PlayerKey)
+simplesettings.save("Data", 123)
+simplesettings.save("MoreData", "real")
+simplesettings.save("MoreMoreData", {"You can save": "a dictionary!"})
+simplesettings.save("EvenMoreMoreData", ("A", "B", "C"))
 ```
 
 Outputted settings file:
@@ -30,8 +31,9 @@ import simplesettings
 
 a_dictionary = {
     "Data": 123,
-    "DictData": {"You can save": "a dictionary!"},
-    "MoreData": ("A", "B", "C")
+    "MoreData": "One Two Three",
+    "MoreMoreData": {"You can save": "a dictionary!"},
+    "EvenMoreMoreData": ("A", "B", "C")
 }
 
 simplesettings.save_dict(a_dictionary)
@@ -39,8 +41,9 @@ simplesettings.save_dict(a_dictionary)
 Outputted settings file:
 ```
 Data = 123
-DictData = {'You can save': 'a dictionary!'}
-MoreData = ('A', 'B', 'C')
+MoreData = One Two Three
+MoreMoreData = {'You can save': 'a dictionary!'}
+EvenMoreMoreData = ('A', 'B', 'C')
 ```
 
 ---
@@ -61,12 +64,13 @@ import simplesettings
 print(simplesettings.loads(
     """
     Data = 123
-    DictData = {'You can save': 'a dictionary!'}
-    MoreData = ('A', 'B', 'C')
+    MoreData = real
+    MoreMoreData = {'You can save': 'a dictionary!'}
+    EvenMoreMoreData = ('A', 'B', 'C')
     """
 ))
 ```
-Output: `{'Data': 123, 'DictData': {'You can save': 'a dictionary!'}, 'MoreData': ('A', 'B', 'C')}`
+Output: `{'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}`
 
 Note that the `load()` and `loads()` functions will automatically convert strings of integers, floats, booleans, tuples, lists and dictionaries to the right type, don't forget to convert them back to the type you want (which you should be doing anyway x))
 
