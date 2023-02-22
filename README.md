@@ -2,11 +2,11 @@
 A simple settings module for Python
 
 ## Simple docs
-`simplesettings.clear()` Clears the settings file leaving only `name|value` behind, takes 0 arguments
+`simplesettings.clear()` Clears the settings file, takes 0 arguments
 
 ---
 
-`simplesettings.save()` Saves a variable to the settings file, takes 2 arguments, name and value; example:
+`simplesettings.save()` Saves a variable to the settings file, example:
 
 ```py
 import simplesettings
@@ -19,12 +19,15 @@ simplesettings.save("EvenMoreMoreData", ("A", "B", "C"))
 
 Outputted settings file:
 ```
-PlayerKey = 10
+Data = 123
+MoreData = real
+MoreMoreData = {'You can save': 'a dictionary!'}
+EvenMoreMoreData = ('A', 'B', 'C')
 ```
 
 ---
 
-`simplesettings.save_dict()` Saves an entire dictionary to the settings file in simplesettings format; example:
+`simplesettings.save_dict()` Saves an entire dictionary to the settings file in simplesettings format, example:
 
 ```py
 import simplesettings
@@ -55,7 +58,7 @@ import simplesettings
 
 print(simplesettings.load())
 ```
-Output: `{'Data': 123, 'DictData': {'You can save': 'a dictionary!'}, 'MoreData': ('A', 'B', 'C')}`
+Output: `{'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}`
 
 `simplesettings.loads()` The same as `simplesettings.load()` but takes a simplesettings string as an argument, example:
 ```py
