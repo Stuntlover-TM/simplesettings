@@ -39,7 +39,11 @@ def load(filename=".settings"):
                 value = ast.literal_eval(line.split("=")[1].split("#")[0].strip())
                 return_dict[name] = value
             except:
-                continue
+                try:
+                    name = line.split("=")[0].strip()
+                    value = line.split("=")[1].split("#")[0].strip()
+                    return_dict[name] = value
+                except: continue
     return return_dict
 
 
@@ -52,5 +56,9 @@ def loads(string):
             value = ast.literal_eval(line.split("=")[1].split("#")[0].strip())
             return_dict[name] = value
         except:
-            continue
+            try:
+                name = line.split("=")[0].strip()
+                value = line.split("=")[1].split("#")[0].strip()
+                return_dict[name] = value
+            except: continue
     return return_dict
