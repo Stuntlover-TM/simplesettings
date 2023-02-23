@@ -3,7 +3,7 @@ import os
 
 
 def _init(filename):
-    if not os.path.isfile(".settings"):
+    if not os.path.isfile(filename):
         open(filename, "w").close()
 
 
