@@ -19,6 +19,7 @@ simplesettings.save("EvenMoreMoreData", ("A", "B", "C"))
 
 Outputted settings file:
 ```
+(main)
 Data = 123
 MoreData = real
 MoreMoreData = {'You can save': 'a dictionary!'}
@@ -43,6 +44,7 @@ simplesettings.save_dict(a_dictionary)
 ```
 Outputted settings file:
 ```
+(main)
 Data = 123
 MoreData = One Two Three
 MoreMoreData = {'You can save': 'a dictionary!'}
@@ -58,7 +60,16 @@ import simplesettings
 
 print(simplesettings.load())
 ```
-Output: `{'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}`
+Output: `{'main': {'Data': 123, 'MoreData': 'One Two Three', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}}`
+You can use this to get certain values, example:
+
+```py
+import simplesettings
+
+settings = simplesettings.load()
+print(settings["main"]["Data"])
+```
+Output: `123`
 
 ---
 
@@ -68,6 +79,7 @@ import simplesettings
 
 print(simplesettings.loads(
     """
+    (main)
     Data = 123
     MoreData = real
     MoreMoreData = {'You can save': 'a dictionary!'}
@@ -75,7 +87,7 @@ print(simplesettings.loads(
     """
 ))
 ```
-Output: `{'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}`
+Output: `{'main': {'Data': 123, 'MoreData': 'real', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}}`
 
 Note that the `load()` and `loads()` functions will automatically convert strings of integers, floats, booleans, tuples, lists and dictionaries to the right type, don't forget to convert them back to the type you want (which you should be doing anyway x))
 
