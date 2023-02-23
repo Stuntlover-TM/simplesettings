@@ -62,6 +62,7 @@ import simplesettings
 print(simplesettings.load())
 ```
 Output: `{'main': {'Data': 123, 'MoreData': 'One Two Three', 'MoreMoreData': {'You can save': 'a dictionary!'}, 'EvenMoreMoreData': ('A', 'B', 'C')}}`
+
 You can use this to get certain values, example:
 
 ```py
