@@ -3,7 +3,7 @@ import os
 
 
 def _init(filename):
-    if not os.path.isfile(filename):
+    if not os.path.isfile(".settings"):
         open(filename, "w").close()
 
 
@@ -13,20 +13,26 @@ def clear(filename=".settings"):
 
 def save_dict(dictionary, filename=".settings", table="main"):
     _init(filename)
-    with open(filename, "r") as variablesf:
-        variables = loads(variablesf.read())
+    with open(filename, "r") as ssfile:
+        variables = loads(ssfile.read())
 
     for key, value in dictionary.items():
-        variables[key] = value
+        try:
+            variables[table][key] = value
+        except:
+            variables[table] = {}
+            variables[table][key] = value
 
     with open(filename, "w") as ssfile:
-        ssfile.write(f"({table})\n")
-        for name, value in variables.items():
-            ssfile.write(f"{name} = {value}\n")
+        for table_name, table_dict in variables.items():
+            ssfile.write(f"\n({table_name})\n")
+
+            for name, value in table_dict.items():
+                ssfile.write(f"{name} = {value}\n")
 
 
-def save(name, value, filename=".settings", table="main"):
-    save_dict({name: value}, filename=filename, table=table)
+def save(key, value, filename=".settings", table="main"):
+    save_dict({key: value}, filename=filename, table=table)
 
 
 def load(filename=".settings"):
