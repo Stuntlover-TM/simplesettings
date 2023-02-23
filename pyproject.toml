@@ -6,6 +6,7 @@ authors = [
   { name="Stuntlover", email="stuntlover@aluvia.de" }
 ]
 
+license = {file = "LICENSE.txt"}
 description = "Python settings files done simple."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -15,6 +16,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
 
 [project.urls]
 "Homepage" = "https://github.com/Stuntlover-TM/simplesettings"
