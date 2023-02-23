@@ -1,5 +1,5 @@
 # simplesettings
-A simple settings module for Python
+Python settings files done simple.
 
 ## Simple docs
 `simplesettings.clear()` Clears the settings file
