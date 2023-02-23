@@ -2,7 +2,7 @@
 A simple settings module for Python
 
 ## Simple docs
-`simplesettings.clear()` Clears the settings file, takes 0 arguments
+`simplesettings.clear()` Clears the settings file
 
 ---
 
