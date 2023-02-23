@@ -6,13 +6,13 @@ def _init(filename):
     if not os.path.isfile(".settings"):
         open(filename, "w").close()
 
-
 def clear(filename=".settings"):
     open(filename, "w").close()
 
 
 def save_dict(dictionary, filename=".settings", table="main"):
     _init(filename)
+
     with open(filename, "r") as ssfile:
         variables = loads(ssfile.read())
 
@@ -24,8 +24,10 @@ def save_dict(dictionary, filename=".settings", table="main"):
             variables[table][key] = value
 
     with open(filename, "w") as ssfile:
+        first_write = True
         for table_name, table_dict in variables.items():
-            ssfile.write(f"\n({table_name})\n")
+            ssfile.write(f"\n({table_name})\n") if not first_write else ssfile.write(f"({table_name})\n")
+            first_write = False
 
             for name, value in table_dict.items():
                 ssfile.write(f"{name} = {value}\n")
@@ -66,7 +68,6 @@ def load(filename=".settings"):
                     continue
 
     return return_dict
-
 
 def loads(string):
     return_dict = {}
