@@ -1,6 +1,6 @@
 # simplesettings-py
 Python settings files done simple.
-[PyPi Page here](https://pypi.org/project/simplesettings-py)
+[PyPI Page here](https://pypi.org/project/simplesettings-py)
 
 ## Simple docs
 `simplesettings.clear()` Clears the settings file
