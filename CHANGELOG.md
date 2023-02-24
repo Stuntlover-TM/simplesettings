@@ -1,5 +1,6 @@
 # Changelog for 1.0.4
 - Actually make the package work by replacing - with a _ in folder name xdd
+- Update README
 
 # Changelog for 1.0.2
 - Fix adding extra newline in the beginning of the settings file
