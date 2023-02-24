@@ -1,5 +1,5 @@
 # Changelog for 1.0.3
-- Actually make the package work by replacing - with a _ in package name 💀
+- ~~Actually make the package work by replacing - with a _ in package name 💀~~, apparently not, folder in site-packages is still with a -
 
 # Changelog for 1.0.2
 - Fix adding extra newline in the beginning of the settings file
