@@ -3,14 +3,35 @@ import os
 
 
 def _init(filename):
-    if not os.path.isfile(".settings"):
+    """
+    Called by most functions by default, simply creates the file if it does not already exist.
+    """
+    if not os.path.isfile(filename):
         open(filename, "w").close()
 
 def clear(filename=".settings"):
+    """
+    Clear the settings file.
+    """
     open(filename, "w").close()
 
 
 def save_dict(dictionary, filename=".settings", table="main"):
+    """
+    Saves an entire dictionary to the settings file in simplesettings format, example:
+
+    
+    import simplesettings_py as settings
+
+    a_dictionary = {
+	    "Data": 123,
+	    "MoreData": "One Two Three",
+	    "MoreMoreData": {"You can save": "a dictionary!"},
+	    "EvenMoreMoreData": ("A", "B", "C")
+    }
+
+    settings.save_dict(a_dictionary, table="saved_dict")
+    """
     _init(filename)
 
     with open(filename, "r") as ssfile:
@@ -34,10 +55,29 @@ def save_dict(dictionary, filename=".settings", table="main"):
 
 
 def save(key, value, filename=".settings", table="main"):
+    """
+    Saves a variable to the settings file, example:
+
+    
+    import simplesettings_py as settings
+
+    settings.save("Data", 123)
+    settings.save("MoreData", "real")
+    settings.save("MoreMoreData", {"You can save": "a dictionary!"}, table="dictionaries")
+    settings.save("EvenMoreMoreData", ("A", "B", "C"), table="tuples")
+    """
     save_dict({key: value}, filename=filename, table=table)
 
 
 def load(filename=".settings"):
+    """
+    Loads the settings file into a dictionary; example:
+
+    
+    import simplesettings_py as settings
+
+    print(settings.load())
+    """
     _init(filename=filename)
     return_dict = {}
 
@@ -70,6 +110,26 @@ def load(filename=".settings"):
     return return_dict
 
 def loads(string):
+    '''
+    The same as simplesettings.load() but takes a simplesettings string as an argument, example:
+
+    
+    import simplesettings_py as settings
+
+    print(settings.loads(
+    """
+    (main)
+    Data = 123
+    MoreData = real
+  
+    (dictionaries)
+    MoreMoreData = {'You can save': 'a dictionary!'}
+  
+    (tuples)
+    EvenMoreMoreData = ('A', 'B', 'C')
+    """
+    ))
+    '''
     return_dict = {}
     varlines = string.split("\n")
 
