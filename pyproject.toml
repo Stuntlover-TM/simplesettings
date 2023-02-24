@@ -1,5 +1,5 @@
 [project]
-name = "simplesettings-py"
+name = "simplesettings_py"
 version = "1.0.2"
 
 authors = [
