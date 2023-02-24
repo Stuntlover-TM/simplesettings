@@ -1,6 +1,6 @@
 [project]
 name = "simplesettings_py"
-version = "1.0.2"
+version = "1.0.3"
 
 authors = [
   { name="Stuntlover", email="stuntlover@aluvia.de" }
