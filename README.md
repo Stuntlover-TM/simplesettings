@@ -2,6 +2,9 @@
 Python settings files done simple.
 [PyPI Page here](https://pypi.org/project/simplesettings-py)
 
+## Installation
+Simply run `python -m pip install simplesettings-py` in your terminal.
+
 ## Simple docs
 `simplesettings.clear()` Clears the settings file
 
