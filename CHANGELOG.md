@@ -1,6 +1,6 @@
 # Changelog for 1.0.4
 - Actually make the package work by replacing - with a _ in folder name xdd
-- Add loads() to __init__.py
+- Add loads() to `__init__`.py
 - Update README
 
 # Changelog for 1.0.2
